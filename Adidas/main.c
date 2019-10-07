@@ -14,9 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "string.h"
+#include "parityValue.h"
+#include "encode.h"
 
-#define HI_NIBBLE(b) (((b) >> 4) & 0x0F)
-#define LO_NIBBLE(b) ((b) & 0x0F)
+
 /*
  * 
  */
@@ -25,13 +26,17 @@ printf ("PRC assignment 'Adidas'\n");
     int choice = -1;
     while (choice != 0)
     {
-        char c = 'A';
+        char c = 'B';
         int i = (int)c;
         printf("%d \n",i);
         
-        printf("%d",HI_NIBBLE(i));
         
-        printf("%d",LO_NIBBLE(i));
+        printf("%d\n",addEvenParityToHex(HI_NIBBLE(i)));
+        //p2 = >>1
+        //p1
+        //p0  & 0000 0111 (7)
+        
+        printf("%d\n",addEvenParityToHex(LO_NIBBLE(i)));
         printf ("\nMENU\n====\n");
         printf ("1: ./encode \n");
         printf ("2: ./channel \n");
