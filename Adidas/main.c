@@ -26,7 +26,7 @@ printf ("PRC assignment 'Adidas'\n");
     int choice = -1;
     while (choice != 0)
     {
-        char c = 'B';
+        char c = 'q';
         int i = (int)c;
         printf("%d \n",i);
         
