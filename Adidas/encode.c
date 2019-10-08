@@ -21,21 +21,21 @@ FILE readTxtFile(char inputFileName[], char outputFileName[]){
 //    while(reading the file)
     return *fp;
 }
-char addEvenParityToHex(char str){
-    char d3 = str >> 3;
-    char d2 = ((str&4) >> 2);
-    char d1 = ((str&2) >> 1);
-    char d0 = str&1;
+uint8_t addEvenParityToHex(uint8_t str){
+    uint8_t d3 = str >> 3;
+    uint8_t d2 = ((str&4) >> 2);
+    uint8_t d1 = ((str&2) >> 1);
+    uint8_t d0 = str&1;
     
-    char p2 = d3 ^ d2 ^ d1 ;
-    char p1 = d3 ^ d1 ^ d0 ;
-    char p0 = d2 ^ d1 ^ d0;
+    uint8_t p2 = d3 ^ d2 ^ d1 ;
+    uint8_t p1 = d3 ^ d1 ^ d0 ;
+    uint8_t p0 = d2 ^ d1 ^ d0;
     
-    int result = (str<<3)|(p2<<2)|(p1<<1)|p0;
-    char final = result;
+    uint8_t result = (str<<3)|(p2<<2)|(p1<<1)|p0;
+    uint8_t final = result;
     return final;
 }
-char randBitFlip(char str,int *count){
+uint8_t randBitFlip(uint8_t str,int *count){
     /* Intialize random number generator */
     //random bit after add parity
     int mask;
