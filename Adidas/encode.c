@@ -6,18 +6,16 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
+#include <math.h>   
 #include "string.h"
 #include "encode.h"
-
-#define HI_NIBBLE(b) (((b) >> 4) & 0x0F)
-#define LO_NIBBLE(b) ((b) & 0x0F)
-
+#include "parityValue.h"
 FILE *fp;
 FILE readTxtFile(char inputFileName[], char outputFileName[]){
     fp = fopen(inputFileName,"r");
     if(fp == NULL)
     {
-
         printf("error opening file %s", inputFileName);
     }
 //    while(reading the file)
@@ -33,8 +31,20 @@ char addEvenParityToHex(char str){
     char p1 = d3 ^ d1 ^ d0 ;
     char p0 = d2 ^ d1 ^ d0;
     
-    char result = (str<<3)|(p2<<2)|(p1<<1)|p0;
-    return result;
+    int result = (str<<3)|(p2<<2)|(p1<<1)|p0;
+    char final = result;
+    return final;
+}
+char randBitFlip(char str,int *count){
+    /* Intialize random number generator */
+    //random bit after add parity
+    int mask;
+    srand(time(NULL)); 
+    for(int i = 0; i<5; i++) 
+    mask =  pow(2, rand()% 8);
+    str ^= mask;
+    *count = *count+1;
+    return str;
 }
 
 

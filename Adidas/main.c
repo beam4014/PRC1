@@ -28,18 +28,17 @@ printf ("PRC assignment 'Adidas'\n");
     {
         char c = 'q';
         int i = (int)c;
-        printf("%d \n",i);
-        
-        
-        printf("%d\n",addEvenParityToHex(HI_NIBBLE(i)));
-        //p2 = >>1
-        //p1
-        //p0  & 0000 0111 (7)
-        
-        printf("%d\n",addEvenParityToHex(LO_NIBBLE(i)));
+        printf("%c \n",i);
+        int FLIP_COUNT = 0;
+        char msbParity = addEvenParityToHex(HI_NIBBLE(i));
+        char lsbParity = addEvenParityToHex(LO_NIBBLE(i));
+        printf("%c\n",msbParity);
+        printf("%c\n",lsbParity);
         printf ("\nMENU\n====\n");
         printf ("1: ./encode \n");
         printf ("2: ./channel \n");
+        printf("%c\n" ,randBitFlip(msbParity,&FLIP_COUNT));
+        printf("Numbers of bit flip: %d\n", FLIP_COUNT);
         printf ("3: ./decode \n");
         printf ("0: quit \n");
              
