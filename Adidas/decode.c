@@ -47,6 +47,11 @@ uint8_t errorCorrection(uint8_t strByte){
             
         return strByte^= 8;//d0 is flip
         
+    }
+    else if (par2 != expectp2 && par1 != expectp1 && par0 != expectp0){
+        
+        return strByte^= 16;//d1 is flip
+        
     }    
     else if (par0 != expectp0){
         
@@ -61,11 +66,6 @@ uint8_t errorCorrection(uint8_t strByte){
     else if(par2 != expectp2){
         
         return strByte^= 4;//p2 is flip
-        
-    }
-    else if (par2 != expectp2 && par1 != expectp1 && par0 != expectp0){
-        
-        return strByte^= 16;//d1 is flip
         
     }
     else
